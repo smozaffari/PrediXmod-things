@@ -1,22 +1,19 @@
 # PrediXmod-things
-
+###Place all the IDs, genes, and genotypes in correct order/format
     genotypescript.R
-Place all the IDs, genes, and genotypes in correct order/format
 
-
+###Run prediction on genotypes    
     SNP2GReX.pl
-Run prediction on genotypes    
 
+
+###Format correctly and compare predicted and observed gene expression (print out correlation & pvalue tables)
 
     pred_obs.R
-Format correctly
+will run:
 
+    ensemblids.pl
 
-run *ensemblids.pl*
-
-
-Compare predicted and observed gene expression and print out tables of pvalues and correlation
-    
+###Read in pvalues and correlation values to make pdf plots
     plots.R 
-Read in pvalues and correlation values to make pdf plots
+
     
