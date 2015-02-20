@@ -48,7 +48,7 @@ lb <- length(LApvalonly)
 la <- length(ENpvalonly)
 
 pdf("Lasso_EN_GTEX_WB.pdf")
-plot(LAcorboth, ENcorboth, xlab = "Lasso R^2", ylab = "Elastic Net R^2", main = paste("Comparing overlapping genes R^2 ", length(a),sep="",))
+plot(LAcorboth^2, ENcorboth^2, xlab = "Lasso R^2", ylab = "Elastic Net R^2", main = paste("Comparing overlapping genes R^2 ", length(a),sep=""))
 
 qqunif(ENpvalonly, main = paste("Elastic Net only genes -", la, sep=""))
 qqunif(LApvalonly, main = paste("Lasso only genes -", lb, sep=""))
