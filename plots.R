@@ -44,3 +44,12 @@ LAcorboth <- LAcor[b]
 #keep those that are in each and don't overlap
 LApvalonly <- LApval[-b]
 ENpvalonly <- ENpval[-a]
+lb <- length(LApvalonly)
+la <- length(ENpvalonly)
+
+pdf("Lasso_EN_GTEX_WB.pdf")
+plot(LAcorboth, ENcorboth, xlab = "Lasso R^2", ylab = "Elastic Net R^2", main = paste("Comparing overlapping genes R^2 ", length(a),sep="",))
+
+qqunif(ENpvalonly, main = paste("Elastic Net only genes -", la, sep=""))
+qqunif(LApvalonly, main = paste("Lasso only genes -", lb, sep=""))
+dev.off()
