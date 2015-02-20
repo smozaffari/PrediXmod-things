@@ -7,8 +7,9 @@ Place all the IDs, genes, and genotypes in correct order/format
 Run prediction on genotypes    
 
     pred_obs.R
-Format correctly and compare predicted and observed gene expression
-Print out tables of pvalues and correlation
+Format correctly 
+Run ensemblids.pl 
+Compare predicted and observed gene expression and print out tables of pvalues and correlation
     
     plots.R 
 Read in pvalues and correlation values to make pdf plots
