@@ -1,3 +1,4 @@
 # PrediXmod-things
 
-First run >genotypescript.R
+First run 
+    genotypescript.R
