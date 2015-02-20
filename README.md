@@ -1,4 +1,4 @@
-# PrediXmod-things
+## PrediXmod-scripts
 #####Place all the IDs, genes, and genotypes in correct order/format
     genotypescript.R
 
