@@ -1,5 +1,9 @@
-####### Rscript scripts/pred_obs.R /group/im-lab/nas40t2/hwheeler/PrediXcan_CV/GTEx-WB.exp.adj.15PEERfactors.3PCs.gender.txt /group/im-lab/nas40t2/smozaffari/Lasso/GTEx_pilot_predicted_alpha1 /group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot
+#script to read the observed expression file and predicted expression file
+#format them to be the same
+#compare them and output tables with pvalues from linear model and correlation values for each gene
 
+####### Rscript scripts/pred_obs.R /group/im-lab/nas40t2/hwheeler/PrediXcan_CV/GTEx-WB.exp.adj.15PEERfactors.3PCs.gender.txt /group/im-lab/nas40t2/smozaffari/Lasso/GTEx_pilot_predicted_alpha1 /group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot
+#need to input original gene expression file, predicted file output from SP2GReX.pl, and name for file where observed gene expression in correct format will go
 args <- commandArgs(TRUE)
 
 original <- args[1]  #original file of observed gene expression, corrected for PCs
@@ -33,14 +37,20 @@ origin <- read.table(original, header = T)
 rownames(origin) <- origin$ID
 origin$ID <- NULL
 torigin <- t(origin)
+#transpose and write observed gene expression file with Ensembl IDs to be changed to gene names
 write.table(torigin, observed, quote = F)
 ensembl <- paste(observed, "ensembl", sep="_")
 system(paste("perl /group/im-lab/nas40t2/smozaffari/scripts/ensemblids.pl", observed,  ensembl, sep=" "))
 
-#ensembl <- "/group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot_ensembl"
+#reading in new observed file with gene name
 obs <- read.table(ensembl, header = T)
-#predicted <- "/group/im-lab/nas40t2/smozaffari/Elastic_Net/GTEx_pilot_predicted"
+#ensembl <- "/group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot_ensembl"
 pred <- read.table(predicted, header = T)
+#reading in predicted file
+#Lasso: 
+#predicted <- /group/im-lab/nas40t2/smozaffari/Lasso/GTEx_pilot_predicted_alpha1
+#Elastic Net: 
+#predicted <- /group/im-lab/nas40t2/smozaffari/Elastic_Net/GTEx_pilot_predicted
 
 #Observed:
 #               Gene   GTEX.PWOO    GTEX.PX3G   GTEX.PLZ5    GTEX.OXRK
@@ -50,69 +60,70 @@ pred <- read.table(predicted, header = T)
 #4 AL669831.1 -0.36049792  0.675464297  0.65251709  0.357673903
 #5     SAMD11 -0.08088877 -0.014935383 -0.06005709  0.006045255
 
-rownames(pred)<- pred$gene             #put genes in rownames
-pred$gene <- NULL                      #remove column with gene names - now in rows
-
-pred_1 <- pred[,sort(colnames(pred))]          #sort individuals in columns
-pred_2 <- pred_1[sort(rownames(pred_1)),]      #sort genes in rows
-
-obs_1 <- obs[, sort(colnames(obs))]     #sort individuals in columns
-obs_2 <- obs_1[order(obs_1$Gene),]      #sort genes in rows
-
-obs_3 <- obs_2[which(obs_2$Gene%in%rownames(pred_2)),]          #keep overlap of predicted genes in new observed table
-pred_3 <- pred_2[which(rownames(pred_2)%in%obs_2$Gene),]        #keep overlap of observed genes in new predicted table
+rownames(pred)<- pred$gene       #put genes in rownames
+pred$gene <- NULL                #remove column with gene names - now in rows
+pred_1 <- pred[,sort(colnames(pred))]     #sort individuals in columns
+pred_2 <- pred_1[sort(rownames(pred_1)),] #sort genes in rows
+obs_1 <- obs[, sort(colnames(obs))] #sort individuals in columns
+obs_2 <- obs_1[order(obs_1$Gene),]  #sort genes in rows
+obs_3 <- obs_2[which(obs_2$Gene%in%rownames(pred_2)),]      #keep overlap of predicted genes in new observed table
+pred_3 <- pred_2[which(rownames(pred_2)%in%obs_2$Gene),]    #keep overlap of observed genes in new predicted table
 
 duplicates <- c()  #could be duplicate genes in observed file
 duplicates <- anyDuplicated(obs_3$Gene)  #count duplicate genes in observed file
 
 vars <- c()
-
 #if duplicate genes exist, make two observed tables with each- will be labeled with genename
+#they do exist in WB
 if (duplicates > 0) {
    files <- c()
-   duplicates <- c( duplicates, anyDuplicated(obs_3$Gene, fromLast=T))                                  #count the other duplicate
+   duplicates <- c( duplicates, anyDuplicated(obs_3$Gene, fromLast=T))  #count the other duplicate
    for (i in 1:length(duplicates)) {
-       x <- obs_3[-duplicates[i],]                                                                      #remove duplicate gene
-       filename <- paste(ensembl, obs_3$Gene[duplicates[i]], duplicates[i], sep="_");                   #new filename to output table
-       print (paste("There are 2 Ensembl IDs for 1 gene: ", obs_3$Gene[duplicates[i]], sep = "")) ;     #notify which gene is duplicated
-       var_name <- paste(obs_3$Gene[duplicates[i]], duplicates[i], sep="_");                            #new name 
-       vars <- c(vars, var_name)
-       files <- c(files, filename);                                                                     #put new names of table to call on later
-       rownames(x) <- x$Gene                                                                            #assign genenames to row
-       x$Gene <- NULL                                                                                   #remove column with gene names
-       x <- x[,-c(which(!colnames(x)%in%colnames(pred_3)))]                                             #only include individuals in predicted file
-       write.table(x, filename, quote = F, row.names = T)                                               #write table to have for later
+       x <- obs_3[-duplicates[i],]                                      #remove duplicate gene
+       filename <- paste(ensembl, obs_3$Gene[duplicates[i]], duplicates[i], sep="_");  #new filename to output table
+       print (paste("There are 2 Ensembl IDs for 1 gene: ", obs_3$Gene[duplicates[i]], sep = "")) ;
+       #notify which gene is duplicated
+       var_name <- paste(obs_3$Gene[duplicates[i]], duplicates[i], sep="_");           #new name 
+       vars <- c(vars, var_name)       #keep these to compare to predicted gene expression later
+       files <- c(files, filename);    #put new names of table to call on later
+       rownames(x) <- x$Gene           #assign genenames to row
+       x$Gene <- NULL                  #remove column with gene names
+       x <- x[,-c(which(!colnames(x)%in%colnames(pred_3)))]    #only include individuals in predicted file
+       write.table(x, filename, quote = F, row.names = T)      #write table to have for later
     }
-} else {
-  rownames(obs_3) <- obs_3$Gene
-  obs_3$Gene <- NULL
-  obs_4 <- obs_3[,-c(which(!colnames(obs_3)%in%colnames(pred_3)))]
-    new_name <- paste(ensembl, "unique", sep = "_")
-    write.table(obs_4, new_name , row.names = T, quote = F)
+}  else { #if duplicates don't exist
+   rownames(obs_3) <- obs_3$Gene #assign genenames to rows
+   obs_3$Gene <- NULL            #remove extra column with gene names
+   obs_4 <- obs_3[,-c(which(!colnames(obs_3)%in%colnames(pred_3)))]  #only include individuals in predicted file
+   new_name <- paste(ensembl, "unique", sep = "_")                   #new_name
+   write.table(obs_4, new_name , row.names = T, quote = F)           #write table to have for later
+   files <- c(new_name)
+   vars <- c("unique")           #keep these to compare to predicted gene expression later
 }
 
-pred_4 <- pred_3[,-c(which(!colnames(pred_3)%in%colnames(obs_3)))]
-new_pname <- paste(predicted, "WB_observed_overlap", sep="_")
-write.table(pred_4, new_pname, row.names = T, quote = F)
+pred_4 <- pred_3[,-c(which(!colnames(pred_3)%in%colnames(obs_3)))]   #only include individuals in observed file
+new_pname <- paste(predicted, "WB_observed_overlap", sep="_")        #new_name
+write.table(pred_4, new_pname, row.names = T, quote = F)    #write new predicted file with right number of genes and inds
 
 dim(pred_4)
 
-for (j in 1:length(files)) {
+for (j in 1:length(files)) {  #for each of the observed expression files
     mypvals <- c()
     mycorvec <- c()
-    obs <- read.table(files[j], header = T)
-    for (i in 1:dim(pred_4)[1]) {
-        pred <- pred_4
+    obs <- read.table(files[j], header = T)  #read in observed file
+    for (i in 1:dim(pred_4)[1]) {            #for each gene
+        pred <- pred_4                       #to make it easy, reassign pred to most updated predicted table
         genesum <- summary(lm(as.numeric(obs[i,]) ~ as.numeric(pred[i,])))
-        ctest <- cor.test(as.numeric(obs[i,]), as.numeric(pred[i,]))
-        cor <- c(ctest$estimate[1])
-        mycorvec <- c(mycorvec, cor)
-        pval <- genesum$coefficients[8];
-        mypvals <- c(mypvals, pval)
+        ctest <- cor.test(as.numeric(obs[i,]), as.numeric(pred[i,]))       #correlation test
+        cor <- c(ctest$estimate[1])          
+        mycorvec <- c(mycorvec, cor)         #keep vector of correlations
+        pval <- genesum$coefficients[8];  
+        mypvals <- c(mypvals, pval)          #keep vector of pvalues
     }
-    names(mypvals) <- rownames(pred)
+    names(mypvals) <- rownames(pred)         #save names of genes to these vectors
     names(mycorvec) <- rownames(pred)
 
     write.table(mypvals, paste(predicted, vars[j],  "Pvals", sep = "_"), quote = F)
+    #write the new tables, with the gene used in observed or "unique"
     write.table(mycorvec, paste(predicted, vars[j],  "Corvec", sep = "_"), quote = F)
 }
