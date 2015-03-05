@@ -21,3 +21,9 @@ will run:
     plots.R 
 
     
+###For Polygenic model:
+######Run to add reference and effect allele to eQTL data to make dosage files.
+######an mix and match cis and trans files, >> onto one file.
+
+    addalleles.pl
+    
