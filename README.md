@@ -6,8 +6,9 @@ genotypescript.R
 ````
 
 ####2. Run prediction on genotypes    
-`SNP2GReX.pl`
-
+````
+SNP2GReX.pl
+````
 
 ####3. Format & compare predicted and observed gene expression:
 ##### * One script (if formatted observed gene expression file doesn't exist): formats and compares in one script
@@ -20,7 +21,7 @@ pred_obs_formatfiles.R
 
 ##### * Two scripts (if formatted observed gene expression file doesn't exist)
 
-  1. Format observed gene expression file correctly
+  1st script Format observed gene expression file correctly
   
 
 ````
@@ -31,10 +32,7 @@ formatfiles.R
     * which will run `ensemblids.pl` to convert ensembl ids to gene names
             
 
-````
-ensemblids.pl
-````
-  2. Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
+  2nd script: Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
 
 
 ````
