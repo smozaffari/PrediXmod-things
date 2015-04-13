@@ -21,7 +21,8 @@ pred_obs_formatfiles.R
 
 ##### * Two scripts (if formatted observed gene expression file doesn't exist)
 
-  1st script Format observed gene expression file correctly: which will run `ensemblids.pl` to convert ensembl ids to gene names
+  1st script Format observed gene expression file correctly: 
+  which will run `ensemblids.pl` to convert ensembl ids to gene names
   
 
 ````
