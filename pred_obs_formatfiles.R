@@ -1,4 +1,4 @@
-####### Rscript scripts/pred_obs.R /group/im-lab/nas40t2/hwheeler/PrediXcan_CV/GTEx-WB.exp.adj.15PEERfactors.3PCs.gender.txt /group/im-lab/nas40t2/smozaffari/Lasso/GTEx_pilot_predicted_alpha1 /group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot WB
+####### Rscript scripts/pred_obs_formatfiles.R /group/im-lab/nas40t2/hwheeler/PrediXcan_CV/GTEx-WB.exp.adj.15PEERfactors.3PCs.gender.txt /group/im-lab/nas40t2/smozaffari/Lasso/GTEx_pilot_predicted_alpha1 /group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot WB
 
 args <- commandArgs(TRUE)
 
