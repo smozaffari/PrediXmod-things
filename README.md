@@ -19,10 +19,10 @@
             * which will run:
             
                 `ensemblids.pl`
+ 
+        * Format correctly and compare predicted and observed gene expression (print out correlation & pvalue)
 
-* Format correctly and compare predicted and observed gene expression (print out correlation & pvalue)
-
-             pred_obs.R
+             'pred_obs.R'
 
 3. Read in pvalues and correlation values to make pdf plots
 
