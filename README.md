@@ -5,7 +5,7 @@
 genotypescript.R
 ````
 
-####2. Run prediction on genotypes    
+####2. Run prediction on genotypes    `SNP2GReX.pl`
 ````
 SNP2GReX.pl
 ````
