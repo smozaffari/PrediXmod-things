@@ -1,6 +1,9 @@
-#### 
- args <- commandArgs(TRUE)
+#Sahar Mozaffari
+#input two files with pvalue and correlation and will compare
+#ex: compare cis+ trans vs trans alone:
+#Rscript plotstrans.R /group/im-lab/nas40t2/Polygenic_score/GTEx_pilot_predicted_trans10-6_WB_ /group/im-lab/nas40t2/Polygenic_score/GTEx_pilot_predicted_cis0.05_trans10-6_WB_GCOM1_1_4548
 
+args <- commandArgs(TRUE)
 
 pvals1 <- read.table(paste(args[1], "_Pvals", sep = ""))
 corvec1 <- read.table(paste(args[1], "_Corvec",sep = ""))
