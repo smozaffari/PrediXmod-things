@@ -1,3 +1,7 @@
+#Sahar Mozaffari
+#converts original file of observed gene expression (corrected for PCs) to format to be compared to others and changes ensemblids. 
+#if ensembl ids file already exists for observed expression can use pred_obs.R
+#compares predicted and observed gene expression
 ####### Rscript scripts/pred_obs_formatfiles.R /group/im-lab/nas40t2/hwheeler/PrediXcan_CV/GTEx-WB.exp.adj.15PEERfactors.3PCs.gender.txt /group/im-lab/nas40t2/smozaffari/Lasso/GTEx_pilot_predicted_alpha1 /group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot WB
 
 args <- commandArgs(TRUE)
