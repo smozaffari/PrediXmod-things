@@ -22,7 +22,6 @@ pred_obs_formatfiles.R
 ##### * Two scripts (if formatted observed gene expression file doesn't exist)
 
   1. Format observed gene expression file correctly 
-  2. 
 
 ````
 formatfiles.R
@@ -33,7 +32,7 @@ formatfiles.R
 ````
 ensemblids.pl
 ````
-  2. Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
+  2.  Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
 
 ````
 pred_obs.R
