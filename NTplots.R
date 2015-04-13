@@ -1,7 +1,5 @@
-#### 
-##args <- args <- commandArgs(TRUE)
-
-#tissue <- args[1]
+#Sahar Mozaffari
+#comparing Lasso, Elastic Net and Polygenic model for Nerve Tibia
 
 LApvals <- read.table("Lasso/GTEx_pilot_predicted_alpha1_WB_GCOM1_2_3981_Pvals")
 LAcorvec <- read.table("Lasso/GTEx_pilot_predicted_alpha1_WB_GCOM1_2_3981_Corvec")
@@ -12,7 +10,7 @@ PScorvec<- read.table("Polygenic_score/GTEx_pilot_predicted_cis0.05_trans10e-05_
 
 source("/group/im-lab/nas40t2/smozaffari/scripts/qqplot.R")
 
-pdf("Poygenic_GTEX_WB_cis0.05trans10-6.pdf")
+pdf("Poygenic_GTEX_NT_cis0.05trans10-6.pdf")
 qqunif(PSpvals$x, main = "Polygenic qqplot") #from
 m <- dim(PSpvals)[1]
 n <- 167
@@ -20,7 +18,7 @@ nullcorvec = tanh(rnorm(m)/sqrt(n-3))
 qqplot(nullcorvec^2,PScorvec^2); abline(0,1); grid()
 dev.off()
 
-pdf("Lasso_GTEX_WB.pdf")
+pdf("Lasso_GTEX_NT.pdf")
 qqunif(LApvals$x, main = "Lasso qqplot") #from 
 m <- dim(LApvals)[1]
 n <- 167
@@ -28,7 +26,7 @@ nullcorvec = tanh(rnorm(m)/sqrt(n-3))
 qqplot(nullcorvec^2,LAcorvec^2); abline(0,1); grid()
 dev.off()
 
-pdf("ElasticNet_GTEX_WB.pdf")
+pdf("ElasticNet_GTEX_NT.pdf")
 m <- dim(ENpvals)[1]
 n <- 167
 nullcorvec = tanh(rnorm(m)/sqrt(n-3))
@@ -72,13 +70,13 @@ PSpvalonly <- PSpval[-c(c,d)]
 LApvalonly <- LApval[-b]
 ENpvalonly <- ENpval[-a]
 
-pdf("Lasso_EN_GTEX_WB.pdf")
+pdf("Lasso_EN_GTEX_NT.pdf")
 plot(ENcorboth^2, LAcorboth^2, xlab = "ENcor^2", ylab = "LASSOcor^2", main =paste( "Comparing overlapping genes R^2 ", length(b), sep = ""))
 qqunif(ENpvalonly, main= paste("Elastic Net only genes -", length(ENpvalonly), sep=""))
 qqunif(LApvalonly, main = paste("LASSO only genes -", length(LApvalonly), sep = ""))
 dev.off()
 
-pdf("Polygenic_Lasso_EN_GTEX_WB.pdf")
+pdf("Polygenic_Lasso_EN_GTEX_NT.pdf")
 plot(PScorbothEN^2, ENcorbothPS^2, xlab = "PScor^2", ylab = "ENcor^2", main =paste( "Comparing overlapping genes R^2 Polygenic + EN ", length(d), sep = ""))
 plot(PScorbothLA^2, LAcorbothPS^2, xlab = "PScor^2", ylab = "LAcor^2", main =paste( "Comparing overlapping genes R^2 Polygenic + Lasso ", length(c), sep = ""))
 qqunif(PSpvalnotLA, main= paste("Polygenic genes not in Lasso -", length(PSpvalnotLA), sep=""))
