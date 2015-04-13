@@ -1,17 +1,20 @@
 ## Predicting GTEx - comparing to observered - scripts
-#####Place all the IDs, genes, and genotypes in correct order/format
+1. Place all the IDs, genes, and genotypes in correct order/format
     genotypescript.R
 
-#####Run prediction on genotypes    
+2. Run prediction on genotypes    
     SNP2GReX.pl
 
+3. One script: 
+    pred_obs_formatfiles.R
 
-#####Format correctly 
+    * Format correctly 
 
-    formatfiles.R
-will run:
+        formatfiles.R
+        
+    * will run:
 
-    ensemblids.pl
+        ensemblids.pl
 
 ##### and compare predicted and observed gene expression (print out correlation & pvalue tables)
 
