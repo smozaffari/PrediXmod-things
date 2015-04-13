@@ -20,8 +20,8 @@ pred_obs_formatfiles.R
 
 
 ##### * Two scripts (if formatted observed gene expression file doesn't exist)
-    
-        1. Format observed gene expression file correctly 
+
+  1. Format observed gene expression file correctly 
 
 ````
 formatfiles.R
