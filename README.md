@@ -7,20 +7,20 @@
     `SNP2GReX.pl`
 
 ####3. Format & compare predicted and observed gene expression:
-   #### 1. One script (if formatted observed gene expression file doesn't exist): formats and compares in one script
+####    1. One script (if formatted observed gene expression file doesn't exist): formats and compares in one script
     
         `pred_obs_formatfiles.R`
 
-   #### 2. Two scripts (if formatted observed gene expression file doesn't exist)
-   ####     1. Format observed gene expression file correctly 
+####    2. Two scripts (if formatted observed gene expression file doesn't exist)
+####        1. Format observed gene expression file correctly 
 
             `formatfiles.R`
 
-         ####   * which will run to convert ensembl ids to gene names
+####            * which will run to convert ensembl ids to gene names
             
                  `ensemblids.pl`
  
-        #### 2. Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
+####         2. Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
 
              `pred_obs.R`
 
