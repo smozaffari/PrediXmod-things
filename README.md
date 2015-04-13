@@ -1,5 +1,6 @@
 ## Predicting GTEx - comparing to observered - scripts
 1. Place all the IDs, genes, and genotypes in correct order/format
+
     `genotypescript.R`
 
 2. Run prediction on genotypes    
@@ -15,6 +16,7 @@
             `formatfiles.R`
 
             * which will run:
+            
                 `ensemblids.pl`
 
         * Format correctly and compare predicted and observed gene expression (print out correlation & pvalue tables)
