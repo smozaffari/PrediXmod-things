@@ -1,3 +1,7 @@
+#Sahar Mozaffari
+#Use if observed gene expression already converted to have ensemble ids 
+#ie. if "/group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot_ensembl" already exists
+#compares observed vs predicted gene expression 
 ####### Rscript scripts/pred_obs.R  /group/im-lab/nas40t2/smozaffari/Lasso/GTEx_pilot_predicted_alpha1 /group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot WB
 ####### Rscript scripts/pred_obs.R  /group/im-lab/nas40t2/smozaffari/Polygenic_score/GTEx_pilot_predicted_cis0.05_trans10e-05 /group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot WB
 
