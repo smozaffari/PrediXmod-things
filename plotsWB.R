@@ -1,7 +1,5 @@
-#### 
-##args <- args <- commandArgs(TRUE)
-
-#tissue <- args[1]
+#Sahar Mozaffari
+#WB comparing Lasso, Elastic Net and Polygenic Score
 
 LApvals <- read.table("Lasso/GTEx_pilot_predicted_alpha1_WB_GCOM1_2_3981_Pvals")
 LAcorvec <- read.table("Lasso/GTEx_pilot_predicted_alpha1_WB_GCOM1_2_3981_Corvec")
