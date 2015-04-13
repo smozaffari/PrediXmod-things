@@ -1,3 +1,5 @@
+#Sahar Mozaffari
+#formats original observed expression file to have ensembl ids & to be compared to predited
 ####### Rscript scripts/pred_obs.R /group/im-lab/nas40t2/hwheeler/PrediXcan_CV/GTEx-WB.exp.adj.15PEERfactors.3PCs.gender.txt /group/im-lab/nas40t2/smozaffari/Observed_GTEx/WB/Observed_WB_pilot
 
 args <- commandArgs(TRUE)
