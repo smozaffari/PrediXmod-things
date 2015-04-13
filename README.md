@@ -8,7 +8,7 @@
 
 #####Format correctly 
 
-    format.R
+    formatfiles.R
 will run:
 
     ensemblids.pl
@@ -18,8 +18,15 @@ will run:
     pred_obs.R
 
 #####Read in pvalues and correlation values to make pdf plots
+
     plots.R 
 
+
+
+
+#Can format and predict with one script: 
+
+    pred_obs_formatfiles.R
     
 ###For Polygenic model:
 ######Run to add reference and effect allele to eQTL data to make dosage files.
