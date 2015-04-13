@@ -1,7 +1,5 @@
-#### 
-##args <- args <- commandArgs(TRUE)
-
-#tissue <- args[1]
+#Sahar Mozaffari
+#comparing Lasso, Elastic Net, and Polygenic model for Nerve Tibia
 
 LApvals <- read.table("Lasso/GTEx_pilot_predicted_alpha1_NT_GCOM1_2_3982_Pvals")
 LAcorvec <- read.table("Lasso/GTEx_pilot_predicted_alpha1_NT_GCOM1_2_3982_Corvec")
