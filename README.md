@@ -40,13 +40,16 @@ pred_obs.R
 
 ####4. Read in pvalues and correlation values to make pdf plots
 
-````plots.R
+````
+plots.R
 ````
 
 
 ###For Polygenic model:
-######Run to add reference and effect allele to eQTL data to make dosage files.
-######an mix and match cis and trans files, >> onto one file.
+######Run to add reference and effect allele to eQTL data to make dosage files for different cis and trans cut offs
+######to mix and match cis and trans files, concatenate >> onto one file then run prediction 
 
-    `addalleles.pl`
+````
+addalleles.pl
+````
     
