@@ -32,7 +32,7 @@ formatfiles.R
 ````
 ensemblids.pl
 ````
-  2.  Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
+  2. Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
 
 ````
 pred_obs.R
