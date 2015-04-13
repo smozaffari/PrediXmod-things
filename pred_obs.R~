@@ -23,10 +23,10 @@ pred_1 <- pred[,sort(colnames(pred))]          #sort individuals in columns
 pred_2 <- pred_1[sort(rownames(pred_1)),]      #sort genes in rows
 
 obs_1 <- obs[, sort(colnames(obs))]	#sort individuals in columns
-obs_2 <- obs_1[order(rownames(obs_1)),]	#sort genes in rows
+obs_2 <- obs_1[order(obs_1$Gene),]	#sort genes in rows
 
-obs_3 <- obs_2[which(rownames(obs_2)%in%rownames(pred_2)),]		#keep overlap of predicted genes in new observed table
-pred_3 <- pred_2[which(rownames(pred_2)%in%rownames(obs_2)),]	#keep overlap of observed genes in new predicted table
+obs_3 <- obs_2[which(obs_2$Gene%in%rownames(pred_2)),]		#keep overlap of predicted genes in new observed table
+pred_3 <- pred_2[which(rownames(pred_2)%in%obs_2$Gene),]	#keep overlap of observed genes in new predicted table
 
 duplicates <- c()  #could be duplicate genes in observed file
 duplicates <- anyDuplicated(obs_3$Gene)  #count duplicate genes in observed file

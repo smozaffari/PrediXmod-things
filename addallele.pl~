@@ -60,6 +60,7 @@ while (my $filename = readdir(DIR)) {
 		    }
 		} elsif ($filename =~/tra/) {
 		    print TRA ("$line[1]\t$rs\t$refallele{$rs}\t$effallele{$rs}\t$line[2]\n");
+		    print $pvalue;
 		    if ($pvalue < 0.00001) {
 			print TRA5 ("$line[1]\t$rs\t$refallele{$rs}\t$effallele{$rs}\t$line[2]\n");
 			if ($pvalue < 0.000001) {

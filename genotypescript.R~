@@ -7,7 +7,7 @@ ID <- read.table("/group/im-lab/nas40t2/hwheeler/cross-tissue/gtex-genotypes/GTE
 print("Merging files")
 colnames(SNPxID) <- ID$V1
 
-tab <- cbind(SNPlist, SNPlist, bim$V4, bim$V5, bim$V6, "NA", SNPxID)
+tab <- cbind(SNPlist, SNPlist, bim$V4, bim$V5, bim$V6, SNPxID)
 
 
 colnames(tab)[1] <- "SNP"
@@ -15,7 +15,7 @@ colnames(tab)[2] <- "SNP"
 colnames(tab)[3] <- "pos"
 colnames(tab)[4] <- "Ref_allele"
 colnames(tab)[5] <- "Dos_allele"
-colnames(tab)[6] <- "MAF"
+
 
 
 spt <- split(tab, bim$V1)

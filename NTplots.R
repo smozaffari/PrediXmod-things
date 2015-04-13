@@ -72,24 +72,16 @@ PSpvalonly <- PSpval[-c(c,d)]
 LApvalonly <- LApval[-b]
 ENpvalonly <- ENpval[-a]
 
-t.test(LAcor, ENcor)
-t.test(LAcor, PScor)
-t.test(ENcor, PScor)
-
-
 pdf("Lasso_EN_GTEX_WB.pdf")
 plot(ENcorboth^2, LAcorboth^2, xlab = "ENcor^2", ylab = "LASSOcor^2", main =paste( "Comparing overlapping genes R^2 ", length(b), sep = ""))
-abline(0,1)
 qqunif(ENpvalonly, main= paste("Elastic Net only genes -", length(ENpvalonly), sep=""))
 qqunif(LApvalonly, main = paste("LASSO only genes -", length(LApvalonly), sep = ""))
 dev.off()
 
 pdf("Polygenic_Lasso_EN_GTEX_WB.pdf")
 plot(PScorbothEN^2, ENcorbothPS^2, xlab = "PScor^2", ylab = "ENcor^2", main =paste( "Comparing overlapping genes R^2 Polygenic + EN ", length(d), sep = ""))
-abline(0,1)
 plot(PScorbothLA^2, LAcorbothPS^2, xlab = "PScor^2", ylab = "LAcor^2", main =paste( "Comparing overlapping genes R^2 Polygenic + Lasso ", length(c), sep = ""))
-abline(0,1)
 qqunif(PSpvalnotLA, main= paste("Polygenic genes not in Lasso -", length(PSpvalnotLA), sep=""))
 qqunif(PSpvalnotEN, main = paste("Polygenic genes not in Elastic Net -", length(PSpvalnotEN), sep = ""))
-qqunif(PSpvalonly, main= paste("Polygenic genes not in Lasso or Elastic Net-", length(PSpvalonly), sep=""))
+qqunif(PSpvalonly, main= paste("Polygenic genes not in Lasso or Elastic Net-", length(PSpvalnotLA), sep=""))
 dev.off()
