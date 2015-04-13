@@ -1,35 +1,34 @@
 ## Predicting GTEx - comparing to observered - scripts
-1. Place all the IDs, genes, and genotypes in correct order/format
+####1. Place all the IDs, genes, and genotypes in correct order/format
 
     `genotypescript.R`
 
-2. Run prediction on genotypes    
+####2. Run prediction on genotypes    
     `SNP2GReX.pl`
 
-3. Format & compare predicted and observed
-    1. One script:
+####3. Format & compare predicted and observed gene expression:
+   #### 1. One script (if formatted observed gene expression file doesn't exist): formats and compares in one script
     
         `pred_obs_formatfiles.R`
 
-    2. Two scripts:
-        * Format correctly 
+   #### 2. Two scripts (if formatted observed gene expression file doesn't exist)
+   ####     1. Format observed gene expression file correctly 
 
             `formatfiles.R`
 
-            * which will run:
+         ####   * which will run to convert ensembl ids to gene names
             
-                `ensemblids.pl`
+                 `ensemblids.pl`
  
-        * Format correctly and compare predicted and observed gene expression (print out correlation & pvalue)
+        #### 2. Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
 
              `pred_obs.R`
 
-3. Read in pvalues and correlation values to make pdf plots
+####3. Read in pvalues and correlation values to make pdf plots
 
     `plots.R`
 
 
-    
 ###For Polygenic model:
 ######Run to add reference and effect allele to eQTL data to make dosage files.
 ######an mix and match cis and trans files, >> onto one file.
