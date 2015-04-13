@@ -11,9 +11,8 @@ SNP2GReX.pl
 ````
 
 ####3. Format & compare predicted and observed gene expression:
-
-
     1. One script (if formatted observed gene expression file doesn't exist): formats and compares in one script
+
 
 ````
 pred_obs_formatfiles.R
