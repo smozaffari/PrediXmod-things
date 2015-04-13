@@ -1,4 +1,4 @@
-## PrediXmod-scripts
+## Predicting GTEx - comparing to observered - scripts
 #####Place all the IDs, genes, and genotypes in correct order/format
     genotypescript.R
 
