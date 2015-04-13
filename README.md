@@ -27,15 +27,12 @@ pred_obs_formatfiles.R
 ````
 formatfiles.R
 ````
-
     * which will run to convert ensembl ids to gene names
             
 
 ````
 ensemblids.pl
 ````
-
-
   2. Compare predicted and observed gene expression (if formatted observed gene expression file already exists)
 
 
