@@ -5,31 +5,28 @@
 2. Run prediction on genotypes    
     SNP2GReX.pl
 
-3. One script: 
-    pred_obs_formatfiles.R
+3. Format & compare predicted and observed
+    1. One script:
+        pred_obs_formatfiles.R
 
-    * Format correctly 
+    2. Two scripts:
+        * Format correctly 
 
         formatfiles.R
         
-    * will run:
+            * which will run
 
-        ensemblids.pl
+                ensemblids.pl
 
-##### and compare predicted and observed gene expression (print out correlation & pvalue tables)
+        * and compare predicted and observed gene expression (print out correlation & pvalue tables)
 
-    pred_obs.R
+        pred_obs.R
 
-#####Read in pvalues and correlation values to make pdf plots
+3. Read in pvalues and correlation values to make pdf plots
 
     plots.R 
 
 
-
-
-#Can format and predict with one script: 
-
-    pred_obs_formatfiles.R
     
 ###For Polygenic model:
 ######Run to add reference and effect allele to eQTL data to make dosage files.
